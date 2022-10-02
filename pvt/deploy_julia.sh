@@ -6,13 +6,12 @@
 
 ! command -v julia --version >/dev/null 2>&1 || { echo "Julia is installed. Nothing to do." >&2; exit 1; }
 
-echo "Installing webIO jupyter extension..."
-pip3 install --upgrade webio_jupyter_extension >/dev/null 2>&1
-echo "Done!"
-echo ""
+#echo "Installing webIO jupyter extension..."
+#pip3 install --upgrade webio_jupyter_extension >/dev/null 2>&1
+#echo "Done!"
+#echo ""
 
 echo "-== Installing Julia... please wait (~2min) ==-"
-echo ""
 
 # First, I define the source url (from julialang.org)
 # See: https://julialang.org/downloads/
