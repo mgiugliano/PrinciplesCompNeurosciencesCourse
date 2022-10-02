@@ -19,7 +19,10 @@ url='https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.2-linux-x86_
 
 # Next we use the command 'wget' to download and uncompressed the tar archive
 echo "Downloading and installing julia from julialang.org..."
-wget -O- $url >/dev/null 2>&1 | tar xz -C /usr/local --strip-components 1 >/dev/null 2>&1
+#wget -O- $url >/dev/null 2>&1 | tar xz -C /usr/local --strip-components 1 #>/dev/null 2>&1
+wget $url -O julia.tar.gz >/dev/null 2>&1
+tar xz -C /usr/local --strip-components 1 julia.tar.gz >/dev/null 2>&1
+
 echo "Done!"
 echo ""
 
