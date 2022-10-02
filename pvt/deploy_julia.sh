@@ -6,9 +6,12 @@
 
 ! command -v julia --version >/dev/null 2>&1 || { echo "Julia is installed. Nothing to do." >&2; exit 1; }
 
-!pip3 install --upgrade webio_jupyter_extension >/dev/null 2>&1
+echo "Installing webIO jupyter extension..."
+pip3 install --upgrade webio_jupyter_extension >/dev/null 2>&1
+echo "Done!"
+echo ""
 
-echo "Installing Julia... please wait (~2min)"
+echo "-== Installing Julia... please wait (~2min) ==-"
 echo ""
 
 # First, I define the source url (from julialang.org)
@@ -17,19 +20,19 @@ url='https://julialang-s3.julialang.org/bin/linux/x64/1.8/julia-1.8.2-linux-x86_
 
 # Next we use the command 'wget' to download and uncompressed the tar archive
 echo "Downloading and installing julia from julialang.org..."
-wget -O- $url | tar xz -C /usr/local --strip-components 1 >/dev/null 2>&1
+wget -O- $url >/dev/null 2>&1 | tar xz -C /usr/local --strip-components 1 >/dev/null 2>&1
 echo "Done!"
 echo ""
 
 # We finally launch julia non-interactively and instruct it to install a series of packages
 echo "Installing packages... (it takes long)"
-julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("PlotlyJS"); Pkg.add("IJulia"); Pkg.precompile("PackageCompiler"); Pkg.precompile("PlotlyJS"); Pkg.precompile("IJulia");' >/dev/null 2>&1
+julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("Plots"); Pkg.add("IJulia"); Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia");' >/dev/null 2>&1
 echo "Done!"
 echo ""
 
 # as well as precompile them
 echo "Precompiling packages and installing kernel... (it takes long)"
-julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("PlotlyJS"); Pkg.precompile("IJulia"); using PackageCompiler; using PlotlyJS; using IJulia; using PlotlyJS; p = plot(rand(2,2)); using IJulia; installkernel("Julia");' >/dev/null 2>&1
+julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using PackageCompiler; using Plotls; using IJulia; p = plot(rand(2,2)); installkernel("Julia");' >/dev/null 2>&1
 echo "Done!"
 echo ""
 
