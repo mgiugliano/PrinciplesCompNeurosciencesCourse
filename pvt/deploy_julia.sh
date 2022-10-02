@@ -31,7 +31,7 @@ echo ""
 # We finally launch julia non-interactively and instruct it to install a series of packages
 echo "Installing packages... (it takes long)"
 echo "As we wait, ...let me introduce you my beloved dog."
-echo "Her name is Margherita...she is a Sloughi, a Maroccan hound!"
+echo "Her name is Margherita...she is a Sloughi, also known as an Arabian Greyhound Galgo!"
 echo "             /)-_-(\ "
 echo "              (o o)"
 echo "      .-----__/\o/"
