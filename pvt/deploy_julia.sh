@@ -30,6 +30,16 @@ echo ""
 
 # We finally launch julia non-interactively and instruct it to install a series of packages
 echo "Installing packages... (it takes long)"
+echo "As we wait, ...let me introduce you my beloved dog."
+echo "Her name is Margherita...she is a Sloughi, a Maroccan hound!"
+echo "             /)-_-(\"
+echo "              (o o)"
+echo "      .-----__/\o/"
+echo "     /  __      /"
+echo " \__/\ /  \_\ |/"
+echo "      \\     ||"
+echo "      //     ||"
+echo "      |\     |\"
 julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("Plots"); Pkg.add("IJulia"); Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia");' >/dev/null 2>&1
 echo "Done!"
 echo ""
