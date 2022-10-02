@@ -4,10 +4,7 @@
 # October 2nd, 2022 - Michele GIUGLIANO
 #
 
-if [ -x "julia --version" ]; then
-   echo "Julia is already installed! Nothing to do."
-   exit 1
-fi
+! command -v julia --version >/dev/null 2>&1 || { echo "Julia is installed. Nothing to do." >&2; exit 1; }
 
 
 echo "Installing Julia... please wait (~2min)"
