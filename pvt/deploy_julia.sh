@@ -11,7 +11,7 @@
 #echo "Done!"
 #echo ""
 
-echo "-== Installing Julia... please wait (~2min) ==-"
+echo "-== Installing Julia... please wait (~3min) ==-"
 
 # First, I define the source url (from julialang.org)
 # See: https://julialang.org/downloads/
