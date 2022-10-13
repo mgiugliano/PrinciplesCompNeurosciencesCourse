@@ -30,17 +30,17 @@ echo ""
 
 # We finally launch julia non-interactively and instruct it to install a series of packages
 echo "Installing packages... (it takes long)"
-echo "As we wait, ...let me introduce you my beloved dog."
-echo "Her name is Margherita...she is a Sloughi, also known as an Arabian Greyhound Galgo!"
-echo "             /)-_-(\ "
-echo "              (o o)"
-echo "      .-----__/\o/"
-echo "     /  __      /"
-echo " \__/\ /  \_\ |/"
-echo "      \\     ||"
-echo "      //     ||"
-echo "      |\     |\ "
-julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("Plots"); Pkg.add("IJulia"); Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia");' >/dev/null 2>&1
+# echo "As we wait, ...let me introduce you my beloved dog."
+# echo "Her name is Margherita...she is a Sloughi, also known as an Arabian Greyhound Galgo!"
+# echo "             /)-_-(\ "
+# echo "              (o o)"
+# echo "      .-----__/\o/"
+# echo "     /  __      /"
+# echo " \__/\ /  \_\ |/"
+# echo "      \\     ||"
+# echo "      //     ||"
+# echo "      |\     |\ "
+julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("Plots"); Pkg.add("Plotly"); Pkg.add("Pluto"); Pkg.add("PlutoUI"); Pkg.add("IJulia"); Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("Plotly"); Pkg.precompile("Pluto"); Pkg.precompile("PlutoUI"); Pkg.precompile("IJulia");' >/dev/null 2>&1
 echo "Done!"
 echo ""
 
@@ -55,6 +55,13 @@ echo "Making julia-version agnostic..."
 mv /root/.local/share/jupyter/kernels/julia-1.8 /root/.local/share/jupyter/kernels/julia >/dev/null 2>&1
 echo "Done!"
 echo ""
+
+# This is experimental - comment it out for the moment
+echo "Static compilation step..."
+curl --output precompile.jl -fsSL https://raw.githubusercontent.com/mgiugliano/PrinciplesCompNeurosciencesCourse/main/pvt/precompile.jl
+
+julia -e 'using PackageCompiler; create_sysimage(["Plots", "Pluto", "PlutoUI", "Plotly"], sysimage_path="sys_mg.so", precompile_execution_file="precompile.jl")
+
 
 echo "Congrats!! Installation was successful."
 echo "NOW REFRESH/RELOAD THIS PAGE BY THE BROWSER (CTRL-R OR CMD-R)"
