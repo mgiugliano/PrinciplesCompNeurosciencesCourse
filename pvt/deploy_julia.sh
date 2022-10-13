@@ -38,13 +38,16 @@ echo "Installing packages... (it takes long)"
 # echo "      \\     ||"
 # echo "      //     ||"
 # echo "      |\     |\ "
-julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("Plots"); Pkg.add("Plotly"); Pkg.add("Pluto"); Pkg.add("PlutoUI"); Pkg.add("IJulia"); Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("Plotly"); Pkg.precompile("Pluto"); Pkg.precompile("PlutoUI"); Pkg.precompile("IJulia");' >/dev/null 2>&1
+
+julia -e 'using Pkg; Pkg.add("Plots"); Pkg.add("IJulia");' >/dev/null 2>&1
+# julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("Plots"); Pkg.add("Plotly"); Pkg.add("Pluto"); Pkg.add("PlutoUI"); Pkg.add("IJulia");' >/dev/null 2>&1
 echo "Done!"
 echo ""
 
 # as well as precompile them
 echo "Precompiling packages and installing kernel... (it takes long)"
-julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using PackageCompiler; using Plotls; using IJulia; p = plot(rand(2,2)); installkernel("Julia");' >/dev/null 2>&1
+julia -e 'using Pkg; Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using IJulia; installkernel("Julia");' >/dev/null 2>&1
+# julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using PackageCompiler; using Plots; using IJulia; p = plot(rand(2,2)); installkernel("Julia");' >/dev/null 2>&1
 echo "Done!"
 echo ""
 
