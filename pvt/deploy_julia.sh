@@ -45,10 +45,10 @@ echo "Done!"
 echo ""
 
 # as well as precompile them
-echo "Precompiling packages and installing kernel... (it takes long)"
-julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using PackageCompiler; using Plotls; using IJulia; p = plot(rand(2,2)); installkernel("Julia");' >/dev/null 2>&1
-echo "Done!"
-echo ""
+# echo "Precompiling packages and installing kernel... (it takes long)"
+# julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using PackageCompiler; using Plotls; using IJulia; p = plot(rand(2,2)); installkernel("Julia");' >/dev/null 2>&1
+# echo "Done!"
+# echo ""
 
 # Let's finally make it version-agnostic
 echo "Making julia-version agnostic..."
