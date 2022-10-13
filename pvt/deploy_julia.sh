@@ -60,7 +60,7 @@ echo ""
 echo "Static compilation step..."
 curl --output precompile.jl -fsSL https://raw.githubusercontent.com/mgiugliano/PrinciplesCompNeurosciencesCourse/main/pvt/precompile.jl
 
-julia -e 'using PackageCompiler; create_sysimage(["Plots", "Pluto", "PlutoUI", "Plotly"], sysimage_path="sys_mg.so", precompile_execution_file="precompile.jl")
+julia -e 'using PackageCompiler; create_sysimage(["Plots", "Pluto", "PlutoUI", "Plotly"], sysimage_path="sys_mg.so", precompile_execution_file="precompile.jl")'
 
 
 echo "Congrats!! Installation was successful."
