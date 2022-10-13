@@ -27,7 +27,9 @@ rm julia.tar.gz >/dev/null 2>&1
 echo "Done!"
 echo ""
 
+# From https://github.com/localtunnel/localtunnel
+# Discovered from https://www.youtube.com/watch?v=NEhrkeF2o_M
 npx localtunnel --port 1234 & 
-julia --sysimage sys.so -O3 --eval 'using Pluto; Pluto.run(Pluto.ServerSession(secret="", options=Pluto.Configuration.from_flat_kwargs(host="0.0.0.0", port=1234)))' 
+julia --sysimage /content/sys_mg.so -O3 --eval 'using Pluto; Pluto.run(Pluto.ServerSession(secret="", options=Pluto.Configuration.from_flat_kwargs(host="0.0.0.0", port=1234)))' 
 
 echo "Congrats!! Installation was successful."
