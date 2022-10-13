@@ -23,8 +23,6 @@ echo "Downloading and installing julia from julialang.org..."
 wget $url -O julia.tar.gz >/dev/null 2>&1
 tar xz -C /usr/local --strip-components 1 -f julia.tar.gz >/dev/null 2>&1
 rm julia.tar.gz >/dev/null 2>&1
-
-
 echo "Done!"
 echo ""
 

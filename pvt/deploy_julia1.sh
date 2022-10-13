@@ -10,8 +10,11 @@ echo "Downloading the sysimage..."
 # First, I define the source url (from my Dropbox)
 url='https://www.dropbox.com/s/fksi0gbrb50swtf/sys.tgz?dl=0'
 wget $url -O sys.tgz >/dev/null 2>&1
+echo "done!"
+echo "Uncompressing the sysimage..."
 tar xzf sys.tgz >/dev/null 2>&1
 rm sys.tgz >/dev/null 2>&1
+echo "done!"
 
 # Next, I define the source url (from julialang.org)
 # See: https://julialang.org/downloads/
@@ -23,8 +26,7 @@ echo "Downloading and installing julia from julialang.org..."
 wget $url -O julia.tar.gz >/dev/null 2>&1
 tar xz -C /usr/local --strip-components 1 -f julia.tar.gz >/dev/null 2>&1
 rm julia.tar.gz >/dev/null 2>&1
-
-echo "Done!"
+echo "done!"
 echo ""
 
 # From https://github.com/localtunnel/localtunnel
