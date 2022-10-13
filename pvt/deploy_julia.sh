@@ -27,7 +27,7 @@ echo "Done!"
 echo ""
 
 # We finally launch julia non-interactively and instruct it to install a series of packages
-echo "Installing packages... (it takes long)"
+echo "Installing packages... (i.e. Plots and IJulia)"
 # echo "As we wait, ...let me introduce you my beloved dog."
 # echo "Her name is Margherita...she is a Sloughi, also known as an Arabian Greyhound Galgo!"
 # echo "             /)-_-(\ "
@@ -45,7 +45,7 @@ echo "Done!"
 echo ""
 
 # as well as precompile them
-echo "Precompiling packages and installing kernel... (it takes long)"
+echo "Precompiling packages and installing kernel..."
 julia -e 'using Pkg; Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using IJulia; installkernel("Julia");' >/dev/null 2>&1
 # julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using PackageCompiler; using Plots; using IJulia; p = plot(rand(2,2)); installkernel("Julia");' >/dev/null 2>&1
 echo "Done!"
