@@ -4,6 +4,12 @@
 # October 2nd, 2022 - Michele GIUGLIANO
 #
 
+if [ -f ./foo.bar ]; then
+    echo "Script already run!"
+    echo "NOW REFRESH/RELOAD THIS PAGE BY THE BROWSER (CTRL-R OR CMD-R)"
+    exit 0
+fi
+
 ! command -v julia --version >/dev/null 2>&1 || { echo "Julia is installed. Nothing to do." >&2; exit 1; }
 
 #echo "Installing webIO jupyter extension..."
@@ -27,7 +33,7 @@ echo "Done!"
 echo ""
 
 # We finally launch julia non-interactively and instruct it to install a series of packages
-echo "Installing packages... (i.e. Plots and IJulia)"
+echo "Installing packages... (i.e. Plots, IJulia, Distributions, DSP)"
 # echo "As we wait, ...let me introduce you my beloved dog."
 # echo "Her name is Margherita...she is a Sloughi, also known as an Arabian Greyhound Galgo!"
 # echo "             /)-_-(\ "
@@ -39,15 +45,15 @@ echo "Installing packages... (i.e. Plots and IJulia)"
 # echo "      //     ||"
 # echo "      |\     |\ "
 
-julia -e 'using Pkg; Pkg.add("Plots"); Pkg.add("IJulia");' >/dev/null 2>&1
-# julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("Plots"); Pkg.add("Plotly"); Pkg.add("Pluto"); Pkg.add("PlutoUI"); Pkg.add("IJulia"); Pkg.add("Distributions"); Pkg.add("DSP");' >/dev/null 2>&1
+julia -e 'using Pkg; Pkg.add("Plots"); Pkg.add("IJulia"); Pkg.add("Distributions"); Pkg.add("DSP");' >/dev/null 2>&1
+# julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("Plots"); Pkg.add("Plotly"); Pkg.add("Pluto"); Pkg.add("PlutoUI"); Pkg.add("IJulia");' >/dev/null 2>&1
 echo "Done!"
 echo ""
 
 # as well as precompile them
 echo "Precompiling packages and installing kernel..."
-julia -e 'using Pkg; Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using IJulia; installkernel("Julia");' >/dev/null 2>&1
-# julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia"); Pkg.precompile("Distributions"); Pkg.precompile("DSP"); using PackageCompiler; using Plots; using IJulia; p = plot(rand(2,2)); installkernel("Julia");' >/dev/null 2>&1
+julia -e 'using Pkg; Pkg.precompile("Plots"); Pkg.precompile("Distributions"); Pkg.precompile("DSP"); Pkg.precompile("IJulia"); using IJulia; installkernel("Julia");' >/dev/null 2>&1
+# julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using PackageCompiler; using Plots; using IJulia; p = plot(rand(2,2)); installkernel("Julia");' >/dev/null 2>&1
 echo "Done!"
 echo ""
 
@@ -67,3 +73,4 @@ echo ""
 echo "Congrats!! Installation was successful."
 echo "NOW REFRESH/RELOAD THIS PAGE BY THE BROWSER (CTRL-R OR CMD-R)"
 echo ""
+touch ./foo.bar
