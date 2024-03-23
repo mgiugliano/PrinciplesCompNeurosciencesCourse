@@ -40,14 +40,14 @@ echo "Installing packages... (i.e. Plots and IJulia)"
 # echo "      |\     |\ "
 
 julia -e 'using Pkg; Pkg.add("Plots"); Pkg.add("IJulia");' >/dev/null 2>&1
-# julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("Plots"); Pkg.add("Plotly"); Pkg.add("Pluto"); Pkg.add("PlutoUI"); Pkg.add("IJulia");' >/dev/null 2>&1
+# julia -e 'using Pkg; Pkg.add("PackageCompiler"); Pkg.add("Plots"); Pkg.add("Plotly"); Pkg.add("Pluto"); Pkg.add("PlutoUI"); Pkg.add("IJulia"); Pkg.add("Distributions"); Pkg.add("DSP");' >/dev/null 2>&1
 echo "Done!"
 echo ""
 
 # as well as precompile them
 echo "Precompiling packages and installing kernel..."
 julia -e 'using Pkg; Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using IJulia; installkernel("Julia");' >/dev/null 2>&1
-# julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia"); using PackageCompiler; using Plots; using IJulia; p = plot(rand(2,2)); installkernel("Julia");' >/dev/null 2>&1
+# julia -e 'using Pkg; Pkg.precompile("PackageCompiler"); Pkg.precompile("Plots"); Pkg.precompile("IJulia"); Pkg.precompile("Distributions"); Pkg.precompile("DSP"); using PackageCompiler; using Plots; using IJulia; p = plot(rand(2,2)); installkernel("Julia");' >/dev/null 2>&1
 echo "Done!"
 echo ""
 
